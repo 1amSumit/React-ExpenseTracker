@@ -25,12 +25,9 @@ const App = () => {
     },
   ];
 
-  const addExpenses = (title, amount, date) => {
+  const addExpenses = (expenseData) => {
     expenses.unshift({
-      title,
-      amount,
-      date,
-      id: Math.random().toString(),
+      ...expenseData,
     });
     console.log(expenses);
   };
