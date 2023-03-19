@@ -2,10 +2,7 @@ import React, { useState } from "react";
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/ExpenseForm/NewExpense";
 
-const localData = localStorage.getItem("expenses");
-const data = JSON.parse(localData);
-
-const DUMMY_DATA = [
+let DummyData = [
   {
     id: "e1",
     title: "Toilet Paper",
@@ -14,8 +11,13 @@ const DUMMY_DATA = [
   },
 ];
 
+const localData = localStorage.getItem("expenses");
+const data = JSON.parse(localData);
+
+const renderData = !data ? DummyData : data;
+
 const App = () => {
-  const [expenses, setExpenses] = useState(data);
+  const [expenses, setExpenses] = useState(renderData);
 
   localStorage.setItem("expenses", JSON.stringify(expenses));
 
